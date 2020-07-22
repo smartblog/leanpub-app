@@ -2,6 +2,8 @@ import React from 'react';
 
 class AuthorCard extends React.Component {
     render() {
+        if(!this.props.author)
+            return <div>Empty author</div>
         const {
             author: { name, email, avatar, about}
         } = this.props;
