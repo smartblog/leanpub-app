@@ -10,10 +10,9 @@ class AuthorCard extends React.Component {
 
         return (
             <div style={styles.authorCard}>
-                <div>Author</div>
-                <div >
+                {/* <div >
                     <img src={avatar} alt={name} style={styles.avatar}/>
-                </div>
+                </div> */}
                 <div>{name}</div>
                 <div>{about}</div>
                 <div>{email}</div>
