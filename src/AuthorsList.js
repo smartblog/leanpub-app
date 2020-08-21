@@ -5,42 +5,45 @@ class AuthorsList extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { isLimit: true };
+    this.state = { isOpen: false, limit: 3 };
   }
 
-  toggleLimit() {
-    this.setState({ isLimit: !this.state.isLimit });
+  toggleOpen() {
+    this.setState({ isOpen: !this.state.isOpen });
   }
 
   render() {
-    const isLimit = this.state.isLimit;
-    const limit = 3;
+    const isOpen = this.state.isOpen;
+    const limit = this.state.limit;
 
-    if (isLimit) {
-      return (
-        <div>
-          {this.props.authors.slice(0, limit).map(author => (
-            <div key={author.id}>
-              <AuthorCard author={author} />
-            </div>
-          ))}
-
-          <button style={styles.button} onClick={() => this.toggleLimit()}>
-            Show all ({this.props.authors.length})
+    return (
+      <div>
+        { isOpen ?
+          <div>
+            {this.props.authors.map(author => (
+              <div key={author.id}>
+                <AuthorCard author={author} />
+              </div>
+            ))}
+          </div> 
+          :
+          <div>
+            {this.props.authors.slice(0, limit).map(author => (
+              <div key={author.id}>
+                <AuthorCard author={author} />
+              </div>
+            ))}
+          </div> 
+        }
+        
+        { this.props.authors.length > limit &&
+          <button style={styles.button} onClick={() => this.toggleOpen()}>
+            {isOpen ? 'Close list' : 'See all'}
           </button>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          {this.props.authors.map(author => (
-            <div key={author.id}>
-              <AuthorCard author={author} />
-            </div>
-          ))}
-        </div>
-      )
-    }
+        }
+
+      </div>
+    )
   }
 }
 
