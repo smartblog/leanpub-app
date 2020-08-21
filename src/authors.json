@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Petrov P.P.",
+    "email": "petr@petrov.ru",
+    "avatar": "https://images.unsplash.com/photo-1593642533144-3d62aa4783ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+    "about": "Petrov Petr. Born in Kazakhstan in 1973"
+  },
+  {
+    "id": 2,
+    "name": "Sidorov S.S.",
+    "email": "sidor@sidorov.ru",
+    "avatar": "https://images.unsplash.com/photo-1593642533144-3d62aa4783ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+    "about": "Sidorov. Born in Ukraine in 1969"
+  },
+  {
+    "id": 3,
+    "name": "James J.J.",
+    "email": "john@james.ru",
+    "avatar": "https://images.unsplash.com/photo-1593642533144-3d62aa4783ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+    "about": "John James. Born in USA in 1981"
+  },
+  {
+    "id": 4,
+    "name": "Ivanov I.I.",
+    "email": "ivan@ivanov.ru",
+    "avatar": "https://images.unsplash.com/photo-1593642533144-3d62aa4783ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+    "about": "Text about Ivanov. Born in Russia in 1981"
+  }
+]
