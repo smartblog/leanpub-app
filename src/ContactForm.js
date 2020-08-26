@@ -1,5 +1,27 @@
 import React from 'react';
 
+const FieldInput = ({label, type, placeholder, value, onChange}) => (
+  <div>
+    <label>{label}</label>
+    <input
+    onChange={onChange}
+    placeholder={placeholder}
+    value={value}
+    />
+  </div>
+);
+
+const FieldTextarea = ({label, placeholder, value, onChange}) => (
+  <div>
+    <label>{label}</label>
+    <textarea
+    onChange={onChange}
+    placeholder={placeholder}
+    value={value}
+    />
+  </div>
+);
+
 class ContactForm extends React.Component {
   constructor (props) {
     super(props);
@@ -37,29 +59,11 @@ class ContactForm extends React.Component {
   }
 
   render() {
-
     return (
       <div>
-        <label>Name</label>
-        <input 
-          onChange={(e) => this.setField('name', e)}
-          placeholder='Enter your Name'
-          value={this.state.name}
-        />
-
-        <label>Email</label>
-        <input 
-          onChange={(e) => this.setField('email', e)}
-          placeholder='Enter your Email'
-          value={this.state.email} 
-        />
-
-        <label>Question</label>
-        <textarea 
-          onChange={(e) => this.setField('question', e)}
-          placeholder='Your Question'
-          value={this.state.question} 
-        />
+        <FieldInput label='Name' placeholder='Enter your Name' value={this.state.name} onChange={(e) => this.setField('name', e)}/>
+        <FieldInput label='Email' placeholder='Enter your Email' value={this.state.email} onChange={(e) => this.setField('email', e)}/>
+        <FieldTextarea label='Question' placeholder='Your Question' value={this.state.question} onChange={(e) => this.setField('question', e)}/>
 
         <button onClick={(e) => this.sendQuestion(this.state)}>Send Question</button>
       </div>
