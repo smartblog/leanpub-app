@@ -3,15 +3,10 @@ import AuthorsList from './AuthorsList';
 import SubscribeModal from './SubscribeModal';
 import ContactForm from './ContactForm';
 
-const Row = ({children, label}) => (
+const Row = ({children, label, price}) => (
   <div>
-    {label}: {children}
-  </div>
-);
-
-const RowPrice = ({children, label}) => (
-  <div>
-    {label}: ${children}
+    <span>{label}: </span>
+    {price ? <span>${children}</span> : <span>{children}</span>}
   </div>
 );
 
@@ -38,8 +33,8 @@ class BookCard extends React.Component {
 
           <Row label='Pages'>{pages}</Row>
           <Row label='Language'>{language}</Row>
-          <RowPrice label='Min Price'>{min_price}</RowPrice>
-          <RowPrice label='Suggested Price'>{suggested_price}</RowPrice>
+          <Row price label='Min Price'>{min_price}</Row>
+          <Row price label='Suggested Price'>{suggested_price}</Row>
           <Row label='Subscribers'>{subscribers}</Row>
           <SubscribeModal />
           <div>Progress: {amount} / {desired_amount} ({progress}%)</div> 
