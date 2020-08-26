@@ -1,6 +1,7 @@
 import React from 'react';
 import AuthorsList from './AuthorsList';
 import SubscribeModal from './SubscribeModal';
+import ContactForm from './ContactForm';
 
 class BookCard extends React.Component {
   render() {
@@ -34,6 +35,7 @@ class BookCard extends React.Component {
             <SubscribeModal />
           </div>
           <AuthorsList authors={authors}/>
+          <ContactForm />
         </div>
       </div>
     )

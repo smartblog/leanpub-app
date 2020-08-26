@@ -2,14 +2,18 @@ import React from 'react'
 import BookCard from './BookCard'
 
 import logo from './images/logo.png'
+import UserInfo from './UserInfo'
 
 class App extends React.Component {
   render() {
     return (
       <>
         <header style={styles.header}>
-          <img style={styles.logo} src={logo}/>
-          LeanPub App
+          <div>
+            <img style={styles.logo} src={logo}/>
+            LeanPub App
+          </div>
+          <UserInfo />
         </header>
         <main>
           <BookCard book={this.props.book}/>
@@ -30,8 +34,9 @@ const styles = {
     color: '#fff',
     minHeight: '50px',
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
     fontSize: '1.2rem',
     fontWeight: 'bold'
   },
