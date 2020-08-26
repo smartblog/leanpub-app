@@ -3,6 +3,18 @@ import AuthorsList from './AuthorsList';
 import SubscribeModal from './SubscribeModal';
 import ContactForm from './ContactForm';
 
+const Row = ({children, label}) => (
+  <div>
+    {label}: {children}
+  </div>
+);
+
+const RowPrice = ({children, label}) => (
+  <div>
+    {label}: ${children}
+  </div>
+);
+
 class BookCard extends React.Component {
   render() {
     if (!this.props.book)
@@ -14,26 +26,24 @@ class BookCard extends React.Component {
 
     return (
       <div style={styles.container}>
+
         <div style={styles.imageBox}>
           <img style={styles.image} src={cover} alt={title} />
         </div>
+
         <div style={styles.cardBody}>
           <div style={styles.title}>{title}</div>
+          {subscribers > 1000 && <div style={styles.popular}>Популярная!</div>}
           <div>{description}</div>
-          <div>Pages: {pages}</div>
-          <div>Language: {language}</div>
-          <div>Min Price: ${min_price}</div>
-          <div>Suggested Price: ${suggested_price}</div>
+
+          <Row label='Pages'>{pages}</Row>
+          <Row label='Language'>{language}</Row>
+          <RowPrice label='Min Price'>{min_price}</RowPrice>
+          <RowPrice label='Suggested Price'>{suggested_price}</RowPrice>
+          <Row label='Subscribers'>{subscribers}</Row>
+          <SubscribeModal />
           <div>Progress: {amount} / {desired_amount} ({progress}%)</div> 
-          <div>
-            <span>Subscribers: {subscribers}</span>
-            {subscribers > 1000 &&
-              <span>
-                Популярная!
-              </span>
-            }
-            <SubscribeModal />
-          </div>
+
           <AuthorsList authors={authors}/>
           <ContactForm />
         </div>
@@ -62,7 +72,13 @@ const styles = {
     padding: '15px 10px'
   },
   title: {
-    fontSize: '16px',
+    fontSize: '20px',
+    margin: '5px 0 10px 0',
     fontWeight: 'bold'
+  },
+  popular: {
+    padding: '5px 10px',
+    background: 'green',
+    color: 'white' 
   }
 }

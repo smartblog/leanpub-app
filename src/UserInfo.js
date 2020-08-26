@@ -1,8 +1,8 @@
 import React from 'react';
-import authContext from './authContext'
+import AuthContext from './AuthContext'
 
 const UserInfo = () => (
-  <authContext.Consumer>
+  <AuthContext.Consumer>
     {
       ({currentUser}) => (
         <div>
@@ -11,7 +11,7 @@ const UserInfo = () => (
         </div>
       )
     }
-  </authContext.Consumer>
+  </AuthContext.Consumer>
 );
 
 export default UserInfo;

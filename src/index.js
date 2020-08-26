@@ -5,7 +5,7 @@ import App from './App';
 import './index.css';
 import authors from './authors.json';
 import cover from './images/book-cover.png';
-import authContext from './authContext';
+import AuthContext from './AuthContext';
 
 const book = {
     'title': 'My first Book',
@@ -30,8 +30,8 @@ const currentUser = {
 }
 
 ReactDom.render(
-  <authContext.Provider value={{'currentUser': currentUser}}>
+  <AuthContext.Provider value={{'currentUser': currentUser}}>
     <App book={book}/>
-  </authContext.Provider>,
+  </AuthContext.Provider>,
   document.getElementById('root')
 )
