@@ -1,26 +1,23 @@
 import React from 'react';
 
-const FieldInput = ({label, type, placeholder, value, onChange}) => (
-  <div>
-    <label>{label}</label>
-    <input
-    onChange={onChange}
-    placeholder={placeholder}
-    value={value}
-    />
-  </div>
-);
+class Field extends React.Component {
+  render() {
+    const { type, name, label, placeholder, value, onChange }  = this.props
 
-const FieldTextarea = ({label, placeholder, value, onChange}) => (
-  <div>
-    <label>{label}</label>
-    <textarea
-    onChange={onChange}
-    placeholder={placeholder}
-    value={value}
-    />
-  </div>
-);
+    const Element = type === 'textarea' ? 'textarea' : 'input'
+    return(
+      <div>
+        <label>{label}</label>
+        <Element
+          name={name}  
+          onChange={onChange}
+          placeholder={placeholder}
+          value={value}
+        />
+      </div>
+    )
+  }
+}
 
 class ContactForm extends React.Component {
   constructor (props) {
@@ -31,11 +28,13 @@ class ContactForm extends React.Component {
       email: '',
       question: ''
     }
+
+    this.onChange = this.onChange.bind(this);
   }
 
-  setField(name, e) {
+  setField(name, value) {
     this.setState({
-      [name]: e.target.value,
+      [name]: value,
     })
   }
 
@@ -58,12 +57,16 @@ class ContactForm extends React.Component {
     this.cleanFields()
   }
 
+  onChange(e) {
+    this.setField(e.target.name, e.target.value)
+  }
+
   render() {
     return (
       <div>
-        <FieldInput label='Name' placeholder='Enter your Name' value={this.state.name} onChange={(e) => this.setField('name', e)}/>
-        <FieldInput label='Email' placeholder='Enter your Email' value={this.state.email} onChange={(e) => this.setField('email', e)}/>
-        <FieldTextarea label='Question' placeholder='Your Question' value={this.state.question} onChange={(e) => this.setField('question', e)}/>
+        <Field name='name' type='input' label='Name' placeholder='Enter your Name' value={this.state.name} onChange={this.onChange}/>
+        <Field name='email' type='input' label='Email' placeholder='Enter your Email' value={this.state.email} onChange={this.onChange}/>
+        <Field name='question' type='textarea' label='Question' placeholder='Your Question' value={this.state.question} onChange={this.onChange}/>
 
         <button onClick={(e) => this.sendQuestion(this.state)}>Send Question</button>
       </div>
