@@ -4,9 +4,8 @@ import React from 'react';
 import App from './App';
 import './index.css';
 import authors from './authors.json';
-import cover from './images/book-cover.png'
-
-console.log(authors);
+import cover from './images/book-cover.png';
+import AuthContext from './AuthContext';
 
 const book = {
     'title': 'My first Book',
@@ -23,7 +22,16 @@ const book = {
     'subscribers': 1002
 }
 
+const currentUser = { 
+  'email': 'user@mail.ru', 
+  'firstName': 'Ivan', 
+  'lastName': 'Ivanov', 
+  'avatarUrl': 'https://media.gettyimages.com/photos/kitten-sitting-on-dog-picture-id979081604'
+}
+
 ReactDom.render(
-  <App book={book}/>,
+  <AuthContext.Provider value={{'currentUser': currentUser}}>
+    <App book={book}/>
+  </AuthContext.Provider>,
   document.getElementById('root')
 )
