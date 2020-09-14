@@ -2,6 +2,7 @@ import React from 'react';
 import AuthorsList from './AuthorsList';
 import SubscribeModal from './SubscribeModal';
 import ContactForm from './ContactForm';
+import SimilarBooks from './SimilarBooks';
 
 const Row = ({children, label, price}) => (
   <div>
@@ -41,6 +42,7 @@ class BookCard extends React.Component {
 
           <AuthorsList authors={authors}/>
           <ContactForm />
+          <SimilarBooks />
         </div>
       </div>
     )
